@@ -35,34 +35,39 @@ public class HowManyFish {
   public static void main(String[] args) {
     // 接受输入参数
     Scanner scanner = new Scanner(System.in);
-    System.out.println("新放入鱼范围的最小值:");
     int minSize = scanner.nextInt(); // 新放入鱼范围的最小值
-    System.out.println("新放入鱼范围的最大值:");
     int maxSize = scanner.nextInt();// 新放入鱼范围的最大值
-    System.out.println("鱼缸里面已经有鱼的数量:");
     int inNumber = scanner.nextInt();// 鱼缸里面已经有鱼的数量
     int[] inFishSize = new int[inNumber]; // 定义一个数组
-    System.out.println(" 初始化已经有的鱼的大小:");
     for (int i = 0; i < inNumber; i++) {
       inFishSize[i] = scanner.nextInt();// 初始化已经有的鱼的大小inFishSize[i]
     }
-    int canPut = 0;// 可以放进鱼的种类数
-    
-    for (int i = minSize; i <= maxSize; i++) { // 遍历输入的范围，逐个查看每中大小的鱼是否可以放进去
-      boolean willBeEaten = false; // 是否被吃，true 被吃。
-      for (int j = 0; j < inNumber; j++) {
-        if ((10 * i >= inFishSize[j] && 2 * i <= inFishSize[j])
-            || (i >= inFishSize[j] * 2 && i <= inFishSize[j] * 10)) {
+
+
+    System.out.println(howManyFish(minSize,maxSize,inFishSize));
+  }
+
+  /**
+   * 规则： 2B <= A <= 10B A吃B
+   *
+   */
+  public static int howManyFish(int minSize, int maxSize, int[] fishSize) {
+    int result = 0;
+    if (minSize > maxSize ) return result;
+    if (fishSize == null || fishSize.length == 0 ) return maxSize-minSize+1;
+
+    for (int i = minSize; i <= maxSize; i++) {
+      boolean willBeEaten = false;
+      for (int j : fishSize) {
+        if ((2 * j <= i && i <= 10 * j) //新放入的会吃掉原来的
+                || (2 * i <= j && j <= 10 * i)) { //原来的会吃掉新放入的
           willBeEaten = true;
-          break; // 一旦发现此鱼不能放进去，break，跳出循环，避免多余的检查
+          break;
         }
       }
-      // 如果这条鱼可以不被鱼缸中其他鱼吃。或者被吃。则canPut++
-      if (!willBeEaten) {
-        System.out.println(i);
-        canPut++;
-      }
-    }1
-    System.out.println(canPut);
+      if (!willBeEaten)
+        result++;
+    }
+    return result;
   }
 }
