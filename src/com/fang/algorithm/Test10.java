@@ -1,40 +1,33 @@
-/**
- * File£ºTest11.java
- * Package£ºcom.fang.algorithm
- * Author£ºchengling
- * Date£º2017Äê11ÔÂ7ÈÕ ÉÏÎç11:10:11
- * Copyright (C) 2003-2017 ËÑ·¿×ÊÑ¶ÓĞÏŞ¹«Ë¾-°æÈ¨ËùÓĞ
- */
 package com.fang.algorithm;
 
 
 /**
- * ¸ø¶¨Ò»¸ödoubleÀàĞÍµÄ¸¡µãÊıbaseºÍintÀàĞÍµÄÕûÊıexponent¡£
- * ÇóbaseµÄexponent´Î·½¡£
- * Ë¼Â·£ºexponent=0 »òÕß <0
- *     exponent<0£¬Çóµ¼Êı£¬¿ÉÄÜ³öÏÖ¶Ô0Çóµ¼Êı
- *     base=0£¬exponent<0 £¿£¿
- * ×¢Òâ£º0µÄ0´Î·½ Ã»ÓĞÒâÒå
- *     µ±ÅĞ¶ÏbaseÊÇ²»ÊÇµÈÓÚ0Ê±£¬²»ÄÜÖ±½ÓĞ´base==0¡¾floatºÍdouble²»ÄÜÖ±½ÓÓÃµÈºÅÅĞ¶ÏÁ½¸öĞ¡ÊıÊÇ·ñÏàµÈ¡¿
- *     Ê¹ÓÃÓÒÒÆÔªËØÄÇ´úÌæ³ıÒÔ2£¬ÓÃÎ»ÓÚÔËËã´úÌæÇóÓàÀ´ÅĞ¶ÏÆæÅ¼
- *    
+ * ç»™å®šä¸€ä¸ªdoubleç±»å‹çš„æµ®ç‚¹æ•°baseå’Œintç±»å‹çš„æ•´æ•°exponentã€‚
+ * æ±‚baseçš„exponentæ¬¡æ–¹ã€‚
+ * æ€è·¯ï¼šexponent=0 æˆ–è€… <0
+ *     exponent<0ï¼Œæ±‚å¯¼æ•°ï¼Œå¯èƒ½å‡ºç°å¯¹0æ±‚å¯¼æ•°
+ *     base=0ï¼Œexponent<0 ï¼Ÿï¼Ÿ
+ * æ³¨æ„ï¼š0çš„0æ¬¡æ–¹ æ²¡æœ‰æ„ä¹‰
+ *     å½“åˆ¤æ–­baseæ˜¯ä¸æ˜¯ç­‰äº0æ—¶ï¼Œä¸èƒ½ç›´æ¥å†™base==0ã€floatå’Œdoubleä¸èƒ½ç›´æ¥ç”¨ç­‰å·åˆ¤æ–­ä¸¤ä¸ªå°æ•°æ˜¯å¦ç›¸ç­‰ã€‘
+ *     ä½¿ç”¨å³ç§»å…ƒç´ é‚£ä»£æ›¿é™¤ä»¥2ï¼Œç”¨ä½äºè¿ç®—ä»£æ›¿æ±‚ä½™æ¥åˆ¤æ–­å¥‡å¶
+ *
  */
 public class Test10 {
   boolean flag = false;
-  
+
   public double Power(double base, int exponent) {
-    int exponentAbs =  Math.abs(exponent);  
+    int exponentAbs =  Math.abs(exponent);
     if(Double.compare(base, 0) == 0 && exponent < 0) {
-      //base=0£¬Ö¸ÊıÎª¸ºÊı£¬ĞèÒª¶Ô0Çóµ¼
-      throw new RuntimeException("has error"); 
-    } 
+      //base=0ï¼ŒæŒ‡æ•°ä¸ºè´Ÿæ•°ï¼Œéœ€è¦å¯¹0æ±‚å¯¼
+      throw new RuntimeException("has error");
+    }
     double result = PowerWithUnsignedExponent(base, exponentAbs);
     if(exponent < 0)
-      result = 1.0 / result;     
+      result = 1.0 / result;
     return result;
   }
-  
-  public double PowerWithUnsignedExponent(double base, int exponent) {      
+
+  public double PowerWithUnsignedExponent(double base, int exponent) {
     if(exponent == 0)
       return 1;
     if(exponent == 1)
@@ -45,7 +38,7 @@ public class Test10 {
       result *= base;
     return result;
   }
-  
+
   public static void main(String[] args) {
     Test10 test = new Test10();
     System.err.println(test.PowerWithUnsignedExponent(5, 3));

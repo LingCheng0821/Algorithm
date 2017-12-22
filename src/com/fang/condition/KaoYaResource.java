@@ -1,46 +1,39 @@
-/**
- * File£ºKaoYaResource.java
- * Package£ºcom.fang.condition
- * Author£ºchengling
- * Date£º2017Äê9ÔÂ18ÈÕ ÏÂÎç1:52:23
- * Copyright (C) 2003-2017 ËÑ·¿×ÊÑ¶ÓĞÏŞ¹«Ë¾-°æÈ¨ËùÓĞ
- */
 package com.fang.condition;
 
 
 public class KaoYaResource {
 
-  private String name;
-  private int count = 1;//¿¾Ñ¼µÄ³õÊ¼ÊıÁ¿
-  private boolean flag = false;//ÅĞ¶ÏÊÇ·ñÓĞĞèÒªÏß³ÌµÈ´ıµÄ±êÖ¾
-  /**
-   * Éú²ú¿¾Ñ¼
-   */
-  public synchronized void product(String name){
-      while(flag){
-          //´ËÊ±ÓĞ¿¾Ñ¼£¬µÈ´ı
-          try {
-              this.wait();
-          } catch (InterruptedException e) {
-              e.printStackTrace();
-          }
-      }
-      this.name=name+count;//ÉèÖÃ¿¾Ñ¼µÄÃû³Æ
-      count++;
-      System.out.println(Thread.currentThread().getName()+"...Éú²úÕß..."+this.name);
-      flag=true;//ÓĞ¿¾Ñ¼ºó¸Ä±ä±êÖ¾
-      notifyAll();//Í¨ÖªÏû·ÑÏß³Ì¿ÉÒÔÏû·ÑÁË
-  }
+    private String name;
+    private int count = 1;//çƒ¤é¸­çš„åˆå§‹æ•°é‡
+    private boolean flag = false;//åˆ¤æ–­æ˜¯å¦æœ‰éœ€è¦çº¿ç¨‹ç­‰å¾…çš„æ ‡å¿—
+    /**
+     * ç”Ÿäº§çƒ¤é¸­
+     */
+    public synchronized void product(String name){
+        while(flag){
+            //æ­¤æ—¶æœ‰çƒ¤é¸­ï¼Œç­‰å¾…
+            try {
+                this.wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        this.name=name+count;//è®¾ç½®çƒ¤é¸­çš„åç§°
+        count++;
+        System.out.println(Thread.currentThread().getName()+"...ç”Ÿäº§è€…..."+this.name);
+        flag=true;//æœ‰çƒ¤é¸­åæ”¹å˜æ ‡å¿—
+        notifyAll();//é€šçŸ¥æ¶ˆè´¹çº¿ç¨‹å¯ä»¥æ¶ˆè´¹äº†
+    }
 
-  /**
-   * Ïû·Ñ¿¾Ñ¼
-   */
-  public synchronized void consume(){
-      while(!flag){//Èç¹ûÃ»ÓĞ¿¾Ñ¼¾ÍµÈ´ı
-          try{this.wait();}catch(InterruptedException e){}
-      }
-      System.out.println(Thread.currentThread().getName()+"...Ïû·ÑÕß........"+this.name);//Ïû·Ñ¿¾Ñ¼1
-      flag = false;
-      notifyAll();//Í¨ÖªÉú²úÕßÉú²ú¿¾Ñ¼
-  }
+    /**
+     * æ¶ˆè´¹çƒ¤é¸­
+     */
+    public synchronized void consume(){
+        while(!flag){//å¦‚æœæ²¡æœ‰çƒ¤é¸­å°±ç­‰å¾…
+            try{this.wait();}catch(InterruptedException e){}
+        }
+        System.out.println(Thread.currentThread().getName()+"...æ¶ˆè´¹è€…........"+this.name);//æ¶ˆè´¹çƒ¤é¸­1
+        flag = false;
+        notifyAll();//é€šçŸ¥ç”Ÿäº§è€…ç”Ÿäº§çƒ¤é¸­
+    }
 }

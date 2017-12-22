@@ -1,144 +1,137 @@
-/**
- * File£ºTest12.java
- * Package£ºcom.fang.algorithm
- * Author£ºchengling
- * Date£º2017Äê11ÔÂ7ÈÕ ÏÂÎç1:48:48
- * Copyright (C) 2003-2017 ËÑ·¿×ÊÑ¶ÓĞÏŞ¹«Ë¾-°æÈ¨ËùÓĞ
- */
 package com.fang.algorithm;
 
 
 /**
- * ´òÓ¡1µ½×î´óµÄnÎ»Êı
- * Ë¼Â·£º¿¼ÂÇÔ½½ç£¬Ê¹ÓÃ×Ö·û´®»òÕßÊı×é±í´ï´óÊı
+ * æ‰“å°1åˆ°æœ€å¤§çš„nä½æ•°
+ * æ€è·¯ï¼šè€ƒè™‘è¶Šç•Œï¼Œä½¿ç”¨å­—ç¬¦ä¸²æˆ–è€…æ•°ç»„è¡¨è¾¾å¤§æ•°
  */
 public class Test11 {
-  
-  public void PrintToMAxNDigits( int n) {
-    if(n <= 0)
-      return;  
-    char[] number = new char[n];
-    for (int i = 0; i < 10; i++) {
-      number[0] = (char) (i + '0');
-      PrintToMAxNDigitsRecursively(number, n ,0);
-    }
-    number = null;
-  }
 
-  private void PrintToMAxNDigitsRecursively(char[] number, int length, int index) {
-    if(index == length - 1){
-      PrintNumber(number);
-      return;
+    public void PrintToMAxNDigits( int n) {
+        if(n <= 0)
+            return;
+        char[] number = new char[n];
+        for (int i = 0; i < 10; i++) {
+            number[0] = (char) (i + '0');
+            PrintToMAxNDigitsRecursively(number, n ,0);
+        }
+        number = null;
     }
-    for (int i = 0; i < 10; i++) {
-      number[index + 1] = (char) (i + '0');
-      PrintToMAxNDigitsRecursively(number, length ,index + 1);
-    }
-  }
 
-  private void PrintNumber(char[] number) {
-    boolean isBeginning0 = true;
-    for (int i = 0; i < number.length; i++) {
-      if(isBeginning0 && number[i] != '0')
-        isBeginning0 = false;
-      if(!isBeginning0)
-        System.out.print(number[i]);
+    private void PrintToMAxNDigitsRecursively(char[] number, int length, int index) {
+        if(index == length - 1){
+            PrintNumber(number);
+            return;
+        }
+        for (int i = 0; i < 10; i++) {
+            number[index + 1] = (char) (i + '0');
+            PrintToMAxNDigitsRecursively(number, length ,index + 1);
+        }
     }
-    System.out.println();
-  }
-  
-  
+
+    private void PrintNumber(char[] number) {
+        boolean isBeginning0 = true;
+        for (int i = 0; i < number.length; i++) {
+            if(isBeginning0 && number[i] != '0')
+                isBeginning0 = false;
+            if(!isBeginning0)
+                System.out.print(number[i]);
+        }
+        System.out.println();
+    }
+
+
  /* public static void main(String[] args) {
     Test11 test = new Test11();
     test.PrintToMAxNDigits(2);
   }*/
-  
-  /**
-   * À©Õ¹£ºÁ½¸öÕûÊıÏà¼Ó
-   */
-  public static void main(String[] args) {  
-    
-    String a="4632864832684683568465765487657665765236465244";  
-    String b="47";  
-    int []pa=stringToInts(a);  
-    int []pb=stringToInts(b);  
-    String ans_add=add(pa, pb);  
-    String ans_sub=sub(pb,pa);  
-    System.out.println("Ïà¼Ó½á¹ûÊÇ£º"+ans_add);  
-    System.out.println("Ïà¼õ½á¹ûÊÇ£º"+ans_sub);  
-}  
-/** 
- * ½«StringĞÍ×ª»»³ÉintÊı×é 
- * @param s 
- * @return 
- */  
-public static int[] stringToInts(String s){  
-    int[] n = new int[s.length()];   
-    for(int i = 0;i<s.length();i++){  
-      n[i] = Integer.parseInt(s.substring(i,i+1));  
-    }  
-    return n;  
-}  
-  
-public static String add(int []a,int []b){  
-    StringBuffer sb=new StringBuffer();  
-    int a_len= a.length-1;  
-    int b_len=b.length-1;  
-    int jinwei=0;//½øÎ»  
-    while(a_len>=0||b_len>=0){  
-        int temp=0;  
-        if(a_len>=0&&b_len>=0){  
-            temp=a[a_len]+b[b_len]+jinwei;  
-        }else if(a_len>=0){  
-            temp=a[a_len]+jinwei;  
-        }else if(b_len>=0){  
-            temp=b[b_len]+jinwei;  
-        }  
-        sb.append(temp%10+"");  
-        jinwei=temp/10;  
-        a_len--;b_len--;  
-    }  
-    return getNum(sb.reverse());  
-}  
-  
-public static String sub(int []a,int []b){  
-    StringBuffer sb=new StringBuffer();  
-    boolean flag=false;//ÅĞ¶ÏaÊÇ²»ÊÇ±ÈbĞ¡  
-    if(a.length<b.length){  
-        int c[]=a;  
-        a=b;b=c;//½»»»Ò»ÏÂ  
-        flag=true;  
-    }  
-    int a_len= a.length-1;  
-    int b_len=b.length-1;  
-    int jiewei=0;//½èÎ»  
-    while(a_len>=0||b_len>=0){  
-        int temp=0;  
-        if(a_len>=0&&b_len>=0){  
-            if((a[a_len]-jiewei)<b[b_len]){  
-                temp=a[a_len]+10-b[b_len]-jiewei;  
-                jiewei=1;  
-            }else{  
-                temp=a[a_len]-b[b_len]-jiewei;  
-            }  
-        }else if(a_len>=0){  
-            temp=a[a_len]-jiewei;  
-            jiewei=0;  
-        }  
-        sb.append(temp+"");  
-          
-        a_len--;b_len--;  
-    }  
-    if(flag){  
-        return getNum(sb.append("-").reverse());  
-    }  
-    return getNum(sb.reverse());  
-}  
-//È¥µô×îÇ°ÃæµÄ0  
-public static String getNum(StringBuffer sb){  
-    while(sb.length() > 1 && sb.charAt(0) == '0') {  
-        sb.deleteCharAt(0);  
-    }  
-    return sb.toString();  
-} 
+
+    /**
+     * æ‰©å±•ï¼šä¸¤ä¸ªæ•´æ•°ç›¸åŠ 
+     */
+    public static void main(String[] args) {
+
+        String a="4632864832684683568465765487657665765236465244";
+        String b="47";
+        int []pa=stringToInts(a);
+        int []pb=stringToInts(b);
+        String ans_add=add(pa, pb);
+        String ans_sub=sub(pb,pa);
+        System.out.println("ç›¸åŠ ç»“æœæ˜¯ï¼š"+ans_add);
+        System.out.println("ç›¸å‡ç»“æœæ˜¯ï¼š"+ans_sub);
+    }
+    /**
+     * å°†Stringå‹è½¬æ¢æˆintæ•°ç»„
+     * @param s
+     * @return
+     */
+    public static int[] stringToInts(String s){
+        int[] n = new int[s.length()];
+        for(int i = 0;i<s.length();i++){
+            n[i] = Integer.parseInt(s.substring(i,i+1));
+        }
+        return n;
+    }
+
+    public static String add(int []a,int []b){
+        StringBuffer sb=new StringBuffer();
+        int a_len= a.length-1;
+        int b_len=b.length-1;
+        int jinwei=0;//è¿›ä½
+        while(a_len>=0||b_len>=0){
+            int temp=0;
+            if(a_len>=0&&b_len>=0){
+                temp=a[a_len]+b[b_len]+jinwei;
+            }else if(a_len>=0){
+                temp=a[a_len]+jinwei;
+            }else if(b_len>=0){
+                temp=b[b_len]+jinwei;
+            }
+            sb.append(temp%10+"");
+            jinwei=temp/10;
+            a_len--;b_len--;
+        }
+        return getNum(sb.reverse());
+    }
+
+    public static String sub(int []a,int []b){
+        StringBuffer sb=new StringBuffer();
+        boolean flag=false;//åˆ¤æ–­aæ˜¯ä¸æ˜¯æ¯”bå°
+        if(a.length<b.length){
+            int c[]=a;
+            a=b;b=c;//äº¤æ¢ä¸€ä¸‹
+            flag=true;
+        }
+        int a_len= a.length-1;
+        int b_len=b.length-1;
+        int jiewei=0;//å€Ÿä½
+        while(a_len>=0||b_len>=0){
+            int temp=0;
+            if(a_len>=0&&b_len>=0){
+                if((a[a_len]-jiewei)<b[b_len]){
+                    temp=a[a_len]+10-b[b_len]-jiewei;
+                    jiewei=1;
+                }else{
+                    temp=a[a_len]-b[b_len]-jiewei;
+                }
+            }else if(a_len>=0){
+                temp=a[a_len]-jiewei;
+                jiewei=0;
+            }
+            sb.append(temp+"");
+
+            a_len--;b_len--;
+        }
+        if(flag){
+            return getNum(sb.append("-").reverse());
+        }
+        return getNum(sb.reverse());
+    }
+    //å»æ‰æœ€å‰é¢çš„0
+    public static String getNum(StringBuffer sb){
+        while(sb.length() > 1 && sb.charAt(0) == '0') {
+            sb.deleteCharAt(0);
+        }
+        return sb.toString();
+    }
 }

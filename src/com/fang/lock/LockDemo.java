@@ -1,10 +1,3 @@
-/**
- * File：LockDemo.java
- * Package：com.fang.lock
- * Author：chengling
- * Date：2017年9月6日 下午6:11:38
- * Copyright (C) 2003-2017 搜房资讯有限公司-版权所有
- */
 package com.fang.lock;
 
 import java.util.concurrent.locks.Lock;

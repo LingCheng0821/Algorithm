@@ -1,10 +1,3 @@
-/**
- * File：QuickEmailToWikiExtractor.java
- * Package：com.fang.threadpool
- * Author：chengling
- * Date：2017年9月28日 上午9:14:15
- * Copyright (C) 2003-2017 搜房资讯有限公司-版权所有
- */
 package com.fang.threadpool;
 
 import java.util.concurrent.BlockingQueue;

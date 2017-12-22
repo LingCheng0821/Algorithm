@@ -1,23 +1,23 @@
 package com.fang.singleton;
 
 public class Singleton {
-  
-  private Singleton(){};
-  
- 
-  /**
-   *  1¡¢¶öººÄ£Ê½ 
-   */ 
- /* 
+
+    private Singleton(){};
+
+
+    /**
+     *  1ã€é¥¿æ±‰æ¨¡å¼
+     */
+ /*
     private static final Singleton instance = new Singleton();
     public static Singleton getInstance(){
       return instance;
     }
   */
-  
-  /**
-   * 2¡¢²»°²È«µÄÀÁººÄ£Ê½
-   */
+
+    /**
+     * 2ã€ä¸å®‰å…¨çš„æ‡’æ±‰æ¨¡å¼
+     */
   /*
      private static Singleton instance;
      public static Singleton getInstance(){
@@ -26,11 +26,11 @@ public class Singleton {
        return instance;
      }
    */
-  
-  /**
-   * 3¡¢²»°²È«µÄË«ÖØ¼ì²éËø¶¨
-   */
-  
+
+    /**
+     * 3ã€ä¸å®‰å…¨çš„åŒé‡æ£€æŸ¥é”å®š
+     */
+
    /*
        private static Singleton instance;
        public static Singleton getInstance(){
@@ -43,48 +43,49 @@ public class Singleton {
          return instance;
        }
      */
-   
-  /**
-   * 4¡¢°²È«µÄË«ÖØ¼ì²éËø¶¨
-   */
- /* 
+
+    /**
+     * 4ã€å®‰å…¨çš„åŒé‡æ£€æŸ¥é”å®š
+     */
+ /*
     private volatile static Singleton instance;
     public static Singleton getInstance(){
       if(instance == null){
         synchronized (Singleton.class) {
           if(instance == null)
             instance = new Singleton();
-        }      
+        }
       }
       return instance;
     }
   */
-  
-  /**
-   * 5¡¢Àà³õÊ¼»¯µÄ½â¾ö·½°¸
-   */ 
+
+    /**
+     * 5ã€ç±»åˆå§‹åŒ–çš„è§£å†³æ–¹æ¡ˆ
+     */
    /*
       private static class InstanceHolder{
         public static Singleton instance = new Singleton();
       }
-      
+
       public static Singleton getInstance(){
         return InstanceHolder.instance;
       }
     */
-  
+
 //  public enum Singleton{
 //    INSTANCE;
 //  }
-  
- 
-    
+
+
+
     private static enum Singleton1{
         INSTANCE;
-        
+
         public static Singleton1 getInst(){
-          return INSTANCE;
+            return INSTANCE;
         }
     }
 
 }
+

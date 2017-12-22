@@ -1,20 +1,13 @@
-/**
- * File£ºTest13.java
- * Package£ºcom.fang.algorithm
- * Author£ºchengling
- * Date£º2017Äê11ÔÂ7ÈÕ ÏÂÎç2:52:00
- * Copyright (C) 2003-2017 ËÑ·¿×ÊÑ¶ÓĞÏŞ¹«Ë¾-°æÈ¨ËùÓĞ
- */
 package com.fang.algorithm;
 
 import java.util.HashMap;
 
 /**
- * ÊäÈëÒ»¸öÕûÊıÊı×é£¬ÊµÏÖÒ»¸öº¯ÊıÀ´µ÷Õû¸ÃÊı×éÖĞÊı×ÖµÄË³Ğò£¬Ê¹µÃËùÓĞµÄÆæÊıÎ»ÓÚÊı×éµÄÇ°°ë²¿·Ö£¬ËùÓĞµÄÅ¼ÊıÎ»ÓÚÎ»ÓÚÊı×éµÄºó°ë²¿·Ö£¬
- * ²¢±£Ö¤ÆæÊıºÍÆæÊı£¬Å¼ÊıºÍÅ¼ÊıÖ®¼äµÄÏà¶ÔÎ»ÖÃ²»±ä¡£
+ * è¾“å…¥ä¸€ä¸ªæ•´æ•°æ•°ç»„ï¼Œå®ç°ä¸€ä¸ªå‡½æ•°æ¥è°ƒæ•´è¯¥æ•°ç»„ä¸­æ•°å­—çš„é¡ºåºï¼Œä½¿å¾—æ‰€æœ‰çš„å¥‡æ•°ä½äºæ•°ç»„çš„å‰åŠéƒ¨åˆ†ï¼Œæ‰€æœ‰çš„å¶æ•°ä½äºä½äºæ•°ç»„çš„ååŠéƒ¨åˆ†ï¼Œ
+ * å¹¶ä¿è¯å¥‡æ•°å’Œå¥‡æ•°ï¼Œå¶æ•°å’Œå¶æ•°ä¹‹é—´çš„ç›¸å¯¹ä½ç½®ä¸å˜ã€‚
  */
 public class Test12 {
-  
+
   public void reOrderArray(int[] array) {
     HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
     int length = array.length;
@@ -35,9 +28,9 @@ public class Test12 {
     for (int i : array) {
       System.err.println(i);
     }
-   
+
   }
-  
+
   public static void main(String[] args) {
     int[] array = {1, 2, 3, 4, 5, 6, 7};
     new Test12().reOrderArray(array);

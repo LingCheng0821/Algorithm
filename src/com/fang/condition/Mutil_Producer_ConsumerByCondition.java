@@ -1,88 +1,81 @@
-/**
- * File£ºMutil_Producer_ConsumerByCondition.java
- * Package£ºcom.fang.condition
- * Author£ºchengling
- * Date£º2017Äê9ÔÂ18ÈÕ ÏÂÎç1:51:50
- * Copyright (C) 2003-2017 ËÑ·¿×ÊÑ¶ÓĞÏŞ¹«Ë¾-°æÈ¨ËùÓĞ
- */
 package com.fang.condition;
 public class Mutil_Producer_ConsumerByCondition {
 
-  public static void main(String[] args) {
-      ResourceByCondition r = new ResourceByCondition();
-      Mutil_Producer pro = new Mutil_Producer(r);
-      Mutil_Consumer con = new Mutil_Consumer(r);
+    public static void main(String[] args) {
+        ResourceByCondition r = new ResourceByCondition();
+        Mutil_Producer pro = new Mutil_Producer(r);
+        Mutil_Consumer con = new Mutil_Consumer(r);
 //      KaoYaResource r = new KaoYaResource();
 //      Producer pro = new Producer(r);
 //      Consumer con = new Consumer(r);
-      //Éú²úÕßÏß³Ì
-      Thread t0 = new Thread(pro);
-      Thread t1 = new Thread(pro);
-      //Ïû·ÑÕßÏß³Ì
-      Thread t2 = new Thread(con);
-      Thread t3 = new Thread(con);
-      //Æô¶¯Ïß³Ì
-      t0.start();
-      t1.start();
-      t2.start();
-      t3.start();
-  }
+        //ç”Ÿäº§è€…çº¿ç¨‹
+        Thread t0 = new Thread(pro);
+        Thread t1 = new Thread(pro);
+        //æ¶ˆè´¹è€…çº¿ç¨‹
+        Thread t2 = new Thread(con);
+        Thread t3 = new Thread(con);
+        //å¯åŠ¨çº¿ç¨‹
+        t0.start();
+        t1.start();
+        t2.start();
+        t3.start();
+    }
 }
 
 /**
-* @decrition Éú²úÕßÏß³Ì
-*/
+ * @decrition ç”Ÿäº§è€…çº¿ç¨‹
+ */
 class Mutil_Producer implements Runnable {
-  private ResourceByCondition r;
-  private final int m = 10;
-  Mutil_Producer(ResourceByCondition r) {
-      this.r = r;
-  }
-  public void run() {
-      for (int i = 0; i < m; i++) {
-        r.product("±±¾©¿¾Ñ¼");
-      }
-  }
+    private ResourceByCondition r;
+    private final int m = 10;
+    Mutil_Producer(ResourceByCondition r) {
+        this.r = r;
+    }
+    public void run() {
+        for (int i = 0; i < m; i++) {
+            r.product("åŒ—äº¬çƒ¤é¸­");
+        }
+    }
 }
 
 /**
-* @decrition Ïû·ÑÕßÏß³Ì
-*/
+ * @decrition æ¶ˆè´¹è€…çº¿ç¨‹
+ */
 class Mutil_Consumer implements Runnable {
-  private ResourceByCondition r;
-  private final int m = 10;
-  Mutil_Consumer(ResourceByCondition r) {
-      this.r = r;
-  }
-  public void run() {
-    for (int i = 0; i < m; i++) {
-          r.consume();
-      }
-  }
+    private ResourceByCondition r;
+    private final int m = 10;
+    Mutil_Consumer(ResourceByCondition r) {
+        this.r = r;
+    }
+    public void run() {
+        for (int i = 0; i < m; i++) {
+            r.consume();
+        }
+    }
 }
 
 
 class Producer implements Runnable {
-  private KaoYaResource r;
-  private final int m = 10;
-  Producer(KaoYaResource r) {
-      this.r = r;
-  }
-  public void run() {
-      for (int i = 0; i < m; i++) {
-        r.product("±±¾©¿¾Ñ¼");
-      }
-  }
+    private KaoYaResource r;
+    private final int m = 10;
+    Producer(KaoYaResource r) {
+        this.r = r;
+    }
+    public void run() {
+        for (int i = 0; i < m; i++) {
+            r.product("åŒ—äº¬çƒ¤é¸­");
+        }
+    }
 }
 class Consumer implements Runnable {
-  private KaoYaResource r;
-  private final int m = 10;
-  Consumer(KaoYaResource r) {
-      this.r = r;
-  }
-  public void run() {
-    for (int i = 0; i < m; i++) {
-          r.consume();
-      }
-  }
+    private KaoYaResource r;
+    private final int m = 10;
+    Consumer(KaoYaResource r) {
+        this.r = r;
+    }
+    public void run() {
+        for (int i = 0; i < m; i++) {
+            r.consume();
+        }
+    }
 }

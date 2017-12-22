@@ -1,10 +1,3 @@
-/**
- * File：Test1.java
- * Package：com.fang.algorithm
- * Author：chengling
- * Date：2017年11月2日 下午6:09:57
- * Copyright (C) 2003-2017 搜房资讯有限公司-版权所有
- */
 package com.fang.algorithm;
 
 

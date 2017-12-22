@@ -1,52 +1,45 @@
-/**
- * File£ºTest18.java
- * Package£ºcom.fang.algorithm
- * Author£ºchengling
- * Date£º2017Äê11ÔÂ8ÈÕ ÏÂÎç1:39:54
- * Copyright (C) 2003-2017 ËÑ·¿×ÊÑ¶ÓĞÏŞ¹«Ë¾-°æÈ¨ËùÓĞ
- */
 package com.fang.algorithm;
 
 
 /**
- * ¶ş²æÊ÷µÄ¾µÏñ
- * ²Ù×÷¸ø¶¨µÄ¶ş²æÊ÷£¬½«Æä±ä»»ÎªÔ´¶ş²æÊ÷µÄ¾µÏñ¡£
- * ¶ş²æÊ÷µÄ¾µÏñ¶¨Òå£ºÔ´¶ş²æÊ÷ 
-          8
-         /  \
-        6   10
-       / \  / \
-      5  7 9  11
-      ¾µÏñ¶ş²æÊ÷
-           8
-         /   \
-        10    6
-       / \   / \
-      11  9 7   5
-      
+ * äºŒå‰æ ‘çš„é•œåƒ
+ * æ“ä½œç»™å®šçš„äºŒå‰æ ‘ï¼Œå°†å…¶å˜æ¢ä¸ºæºäºŒå‰æ ‘çš„é•œåƒã€‚
+ * äºŒå‰æ ‘çš„é•œåƒå®šä¹‰ï¼šæºäºŒå‰æ ‘
+ 8
+ /  \
+ 6   10
+ / \  / \
+ 5  7 9  11
+ é•œåƒäºŒå‰æ ‘
+ 8
+ /   \
+ 10    6
+ / \   / \
+ 11  9 7   5
+
  */
 public class Test18 {
-  
-  static class TreeNode {
-      int val = 0;
-      TreeNode left = null;
-      TreeNode right = null;
-      public TreeNode(int val) {
-          this.val = val;
-      }
-  }
-  
-  public void Mirror(TreeNode root) {
-      if(root == null) return;
-      if(root.left == null && root.right==null)
-          return;
-      
-      TreeNode temp = root.left;
-      root.left = root.right;
-      root.right = temp;
-      
-      if(root.left != null) Mirror(root.left);
-      if(root.right != null) Mirror(root.right);      
-  }
-  
+
+    static class TreeNode {
+        int val = 0;
+        TreeNode left = null;
+        TreeNode right = null;
+        public TreeNode(int val) {
+            this.val = val;
+        }
+    }
+
+    public void Mirror(TreeNode root) {
+        if(root == null) return;
+        if(root.left == null && root.right==null)
+            return;
+
+        TreeNode temp = root.left;
+        root.left = root.right;
+        root.right = temp;
+
+        if(root.left != null) Mirror(root.left);
+        if(root.right != null) Mirror(root.right);
+    }
+
 }

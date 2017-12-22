@@ -1,15 +1,15 @@
 /**
- * File£ºTest15.java
- * Package£ºcom.fang.algorithm
- * Author£ºchengling
- * Date£º2017Äê11ÔÂ7ÈÕ ÏÂÎç8:56:36
- * Copyright (C) 2003-2017 ËÑ·¿×ÊÑ¶ÓĞÏŞ¹«Ë¾-°æÈ¨ËùÓĞ
+ * Fileï¼šTest15.java
+ * Packageï¼šcom.fang.algorithm
+ * Authorï¼šchengling
+ * Dateï¼š2017å¹´11æœˆ7æ—¥ ä¸‹åˆ8:56:36
+ * Copyright (C) 2003-2017 æœæˆ¿èµ„è®¯æœ‰é™å…¬å¸-ç‰ˆæƒæ‰€æœ‰
  */
 package com.fang.algorithm;
 
 /**
- * ¸ø¶¨µ¥ÏòÁ´±íµÄÍ·Ö¸ÕëºÍÒ»¸ö½ÚµãÖ¸Õë£¬¶¨ÒåÒ»¸öº¯ÊıÔÚO(1)Ê±½¨É¾³ı¸Ã½áµã¡£
- * Ë¼Â·£ºĞèÒªÉ¾³ı½áµãi,°Ñi½áµãµÄÏÂÒ»¸ö½áµãjµÄÄÚ´æ¸´ÖÆ¸²¸Ç½áµãi£¬ÔÙ°ÑiµÄÏÂÒ»¸ö½áµãÖ¸ÏòjµÄÏÂÒ»¸ö½áµã£¬É¾³ı½áµãj¡£
+ * ç»™å®šå•å‘é“¾è¡¨çš„å¤´æŒ‡é’ˆå’Œä¸€ä¸ªèŠ‚ç‚¹æŒ‡é’ˆï¼Œå®šä¹‰ä¸€ä¸ªå‡½æ•°åœ¨O(1)æ—¶å»ºåˆ é™¤è¯¥ç»“ç‚¹ã€‚
+ * æ€è·¯ï¼šéœ€è¦åˆ é™¤ç»“ç‚¹i,æŠŠiç»“ç‚¹çš„ä¸‹ä¸€ä¸ªç»“ç‚¹jçš„å†…å­˜å¤åˆ¶è¦†ç›–ç»“ç‚¹iï¼Œå†æŠŠiçš„ä¸‹ä¸€ä¸ªç»“ç‚¹æŒ‡å‘jçš„ä¸‹ä¸€ä¸ªç»“ç‚¹ï¼Œåˆ é™¤ç»“ç‚¹jã€‚
  */
 public class Test15 {
   
@@ -29,14 +29,14 @@ public class Test15 {
       return null;
     }
     
-    // Ö»ÓĞÒ»¸ö½áµã£¬É¾³ıÍ·½áµã
+    // åªæœ‰ä¸€ä¸ªç»“ç‚¹ï¼Œåˆ é™¤å¤´ç»“ç‚¹
     if (head == toBeDelete) {
       toBeDelete = null;
       head = null;
       return null;
     }
     
-    // ²»ÊÇÎ²½áµã
+    // ä¸æ˜¯å°¾ç»“ç‚¹
     if (toBeDelete.next != null) {
       ListNode nextNode = toBeDelete.next;
       toBeDelete.val = nextNode.val;
@@ -66,12 +66,12 @@ public class Test15 {
   
   public static void main(String[] args) {
     
-    // ²âÊÔ´úÂë
+    // æµ‹è¯•ä»£ç 
     ListNode head = null;   
     head = new ListNode(1);
     
     /**
-     * // (3)Ö»ÓĞÒ»¸ö½áµã£¬É¾³ıÎ²½áµã(Ò²ÊÇÍ·½áµã)
+     * // (3)åªæœ‰ä¸€ä¸ªç»“ç‚¹ï¼Œåˆ é™¤å°¾ç»“ç‚¹(ä¹Ÿæ˜¯å¤´ç»“ç‚¹)
      * print(head);
      * print(delete(head, head));
     */
@@ -87,10 +87,10 @@ public class Test15 {
     p.next = tail;
     
     print(head);   
-    // (2)¶à¸ö½áµã£¬É¾³ıÎ²½áµã
+    // (2)å¤šä¸ªç»“ç‚¹ï¼Œåˆ é™¤å°¾ç»“ç‚¹
    // print(delete(head, tail));
     
-    // (1)É¾³ıµÄ²»ÊÇÎ²½áµã
+    // (1)åˆ é™¤çš„ä¸æ˜¯å°¾ç»“ç‚¹
     print(delete(head, head.next));
     
   }

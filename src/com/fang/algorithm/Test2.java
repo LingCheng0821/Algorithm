@@ -1,20 +1,13 @@
-/**
- * File£ºTest2.java
- * Package£ºcom.fang.algorithm
- * Author£ºchengling
- * Date£º2017Äê11ÔÂ3ÈÕ ÏÂÎç3:09:57
- * Copyright (C) 2003-2017 ËÑ·¿×ÊÑ¶ÓĞÏŞ¹«Ë¾-°æÈ¨ËùÓĞ
- */
 package com.fang.algorithm;
 
 
 /**
- * ÇëÊµÏÖÒ»¸öº¯Êı£¬½«Ò»¸ö×Ö·û´®ÖĞµÄ¿Õ¸ñÌæ»»³É¡°%20¡±¡£
- * ÀıÈç£¬µ±×Ö·û´®ÎªWe Are Happy.Ôò¾­¹ıÌæ»»Ö®ºóµÄ×Ö·û´®ÎªWe%20Are%20Happy¡£
+ * è¯·å®ç°ä¸€ä¸ªå‡½æ•°ï¼Œå°†ä¸€ä¸ªå­—ç¬¦ä¸²ä¸­çš„ç©ºæ ¼æ›¿æ¢æˆâ€œ%20â€ã€‚
+ * ä¾‹å¦‚ï¼Œå½“å­—ç¬¦ä¸²ä¸ºWe Are Happy.åˆ™ç»è¿‡æ›¿æ¢ä¹‹åçš„å­—ç¬¦ä¸²ä¸ºWe%20Are%20Happyã€‚
  */
 public class Test2 {
   public String replaceSpace(StringBuffer str) {
-    StringBuffer result = new StringBuffer(); 
+    StringBuffer result = new StringBuffer();
     if(str == null){
       return null;
     }
@@ -25,8 +18,9 @@ public class Test2 {
         result.append(str.charAt(i));
       }
     }
-    
-    
+
+
     return result.toString();
   }
 }
+

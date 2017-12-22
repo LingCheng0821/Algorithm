@@ -1,10 +1,3 @@
-/**
- * File£ºtestForkJoin.java
- * Package£ºcom.fang.forkjoin
- * Author£ºchengling
- * Date£º2017Äê10ÔÂ30ÈÕ ÉÏÎç10:34:47
- * Copyright (C) 2003-2017 ËÑ·¿×ÊÑ¶ÓĞÏŞ¹«Ë¾-°æÈ¨ËùÓĞ
- */
 package com.fang.forkjoin;
 
 import java.math.BigInteger;
@@ -16,18 +9,15 @@ import java.util.concurrent.Future;
 import java.util.concurrent.RecursiveTask;
 
 
-/**
- * @author chengling
- */
 public class CountTask extends RecursiveTask<Long>{
 
-    int[] valueNum = new int[1000000];//1000w¸öÊı
-    
-    //ãĞÖµ
+    int[] valueNum = new int[1000000];//1000wä¸ªæ•°
+
+    //é˜ˆå€¼
     private static final int THRESHOLD = 10000;
-    //ÆğÊ¼Öµ
+    //èµ·å§‹å€¼
     private int start;
-    //½áÊøÖµ
+    //ç»“æŸå€¼
     private int end;
 
     public CountTask(int start, int end) {
@@ -46,17 +36,17 @@ public class CountTask extends RecursiveTask<Long>{
         Long res = 0L;
         if (compute){
             for (int i = start; i < end; i++){
-              res += valueNum[i];
+                res += valueNum[i];
             }
         }else {
-            //Èç¹û³¤¶È´óÓÚãĞÖµ£¬Ôò·Ö¸îÎªĞ¡ÈÎÎñ
+            //å¦‚æœé•¿åº¦å¤§äºé˜ˆå€¼ï¼Œåˆ™åˆ†å‰²ä¸ºå°ä»»åŠ¡
             int mid = (start + end) / 2;
             CountTask task1 = new CountTask(start,mid);
             CountTask task2 = new CountTask(mid + 1, end);
-            //¼ÆËãĞ¡ÈÎÎñµÄÖµ
+            //è®¡ç®—å°ä»»åŠ¡çš„å€¼
             task1.fork();
             task2.fork();
-            //µÃµ½Á½¸öĞ¡ÈÎÎñµÄÖµ
+            //å¾—åˆ°ä¸¤ä¸ªå°ä»»åŠ¡çš„å€¼
             Long task1Res = task1.join();
             Long task2Res = task2.join();
             res = task1Res + task2Res;
@@ -67,14 +57,15 @@ public class CountTask extends RecursiveTask<Long>{
     public static void main(String[] args) throws ExecutionException, InterruptedException {
 //        long start = System.currentTimeMillis();
 //        ForkJoinPool pool = new ForkJoinPool();
-//       
+//
 //        CountTask task = new CountTask(1,1000000);
 //        ForkJoinTask<Long> submit = pool.submit(task);
 //        System.out.println("Final result:" + submit.get());
 //        long end = System.currentTimeMillis();
 //        System.out.println(end - start);
-      Random r = new Random();
-      System.out.println(r.nextInt());
+        Random r = new Random();
+        System.out.println(r.nextInt());
     }
 }
+
 

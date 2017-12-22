@@ -1,71 +1,64 @@
-/**
- * File£ºTest16.java
- * Package£ºcom.fang.algorithm
- * Author£ºchengling
- * Date£º2017Äê11ÔÂ7ÈÕ ÏÂÎç10:06:35
- * Copyright (C) 2003-2017 ËÑ·¿×ÊÑ¶ÓĞÏŞ¹«Ë¾-°æÈ¨ËùÓĞ
- */
 package com.fang.algorithm;
 
 import com.fang.algorithm.Test15.ListNode;
 
 
 /**
- * ·´×ªÁ´±í
- * ÊäÈëÒ»¸öÁ´±íµÄÍ·½áµã£¬·´×ª¸ÃÁ´±í²¢Êä³ö·´×ªºóÁ´±íµÄÍ·½áµã
+ * åè½¬é“¾è¡¨
+ * è¾“å…¥ä¸€ä¸ªé“¾è¡¨çš„å¤´ç»“ç‚¹ï¼Œåè½¬è¯¥é“¾è¡¨å¹¶è¾“å‡ºåè½¬åé“¾è¡¨çš„å¤´ç»“ç‚¹
  */
 public class Test16 {
-  
- static class ListNode {  
-    int val;   
-    ListNode next = null;   
-    ListNode(int val) {
-      this.val = val;
+
+    static class ListNode {
+        int val;
+        ListNode next = null;
+        ListNode(int val) {
+            this.val = val;
+        }
     }
- }
- 
- public static ListNode reverse(ListNode head){ 
-   ListNode pReversedHead = null;
-   ListNode pNode = head;
-   ListNode pPrev = null;
-   
-   while(pNode != null){
-     ListNode pNext = pNode.next;
-     if(pNext == null) 
-       pReversedHead = pNode;
-     pNode.next = pPrev;
-     pPrev = pNode;
-     pNode = pNext;
-   }   
-   return pReversedHead;
- }
- 
- public static void print(ListNode head) {
-   if (head == null) System.out.println("list is null");
-   while (head != null) {
-     System.out.print(head.val + "-->");
-     head = head.next;
-   }
-   System.out.println("-------------------------");
- }
- 
- public static void main(String[] args) {
-   
-   // ²âÊÔ´úÂë
-   ListNode head = null;   
-   print(reverse(head));
-   
-   head = new ListNode(1);
-   print(reverse(head));
-  
-   ListNode p = head;
-   for (int i = 2; i < 6; i++) {    
-     ListNode node = new ListNode(i);
-     p.next = node;
-     p = p.next;
-   }   
-   print(reverse(head));
-   
- }
- 
+
+    public static ListNode reverse(ListNode head){
+        ListNode pReversedHead = null;
+        ListNode pNode = head;
+        ListNode pPrev = null;
+
+        while(pNode != null){
+            ListNode pNext = pNode.next;
+            if(pNext == null)
+                pReversedHead = pNode;
+            pNode.next = pPrev;
+            pPrev = pNode;
+            pNode = pNext;
+        }
+        return pReversedHead;
+    }
+
+    public static void print(ListNode head) {
+        if (head == null) System.out.println("list is null");
+        while (head != null) {
+            System.out.print(head.val + "-->");
+            head = head.next;
+        }
+        System.out.println("-------------------------");
+    }
+
+    public static void main(String[] args) {
+
+        // æµ‹è¯•ä»£ç 
+        ListNode head = null;
+        print(reverse(head));
+
+        head = new ListNode(1);
+        print(reverse(head));
+
+        ListNode p = head;
+        for (int i = 2; i < 6; i++) {
+            ListNode node = new ListNode(i);
+            p.next = node;
+            p = p.next;
+        }
+        print(reverse(head));
+
+    }
+
 }

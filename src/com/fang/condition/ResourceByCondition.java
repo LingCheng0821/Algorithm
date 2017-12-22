@@ -1,10 +1,3 @@
-/**
- * File£ºResourceByCondition.java
- * Package£ºcom.fang.condition
- * Author£ºchengling
- * Date£º2017Äê9ÔÂ18ÈÕ ÏÂÎç1:48:24
- * Copyright (C) 2003-2017 ËÑ·¿×ÊÑ¶ÓĞÏŞ¹«Ë¾-°æÈ¨ËùÓĞ
- */
 package com.fang.condition;
 
 import java.util.concurrent.locks.Condition;
@@ -17,15 +10,15 @@ public class ResourceByCondition {
   private int count = 1;
   private boolean flag = false;
 
-  //´´½¨Ò»¸öËø¶ÔÏó¡£
+  //åˆ›å»ºä¸€ä¸ªé”å¯¹è±¡ã€‚
   Lock lock = new ReentrantLock();
 
-  //Í¨¹ıÒÑÓĞµÄËø»ñÈ¡Á½×é¼àÊÓÆ÷£¬Ò»×é¼àÊÓÉú²úÕß£¬Ò»×é¼àÊÓÏû·ÑÕß¡£
+  //é€šè¿‡å·²æœ‰çš„é”è·å–ä¸¤ç»„ç›‘è§†å™¨ï¼Œä¸€ç»„ç›‘è§†ç”Ÿäº§è€…ï¼Œä¸€ç»„ç›‘è§†æ¶ˆè´¹è€…ã€‚
   Condition producer_con = lock.newCondition();
   Condition consumer_con = lock.newCondition();
 
   /**
-   * Éú²ú
+   * ç”Ÿäº§
    * @param name
    */
   public void product(String name) {
@@ -38,16 +31,16 @@ public class ResourceByCondition {
       }
       this.name = name + count;
       count++;
-      System.out.println(Thread.currentThread().getName() + "...Éú²úÕß5.0..." + this.name);
+      System.out.println(Thread.currentThread().getName() + "...ç”Ÿäº§è€…5.0..." + this.name);
       flag = true;
-      consumer_con.signal();// Ö±½Ó»½ĞÑÏû·ÑÏß³Ì
+      consumer_con.signal();// ç›´æ¥å”¤é†’æ¶ˆè´¹çº¿ç¨‹
     } finally {
       lock.unlock();
     }
   }
 
   /**
-   * Ïû·Ñ
+   * æ¶ˆè´¹
    */
   public void consume() {
     lock.lock();
@@ -57,11 +50,12 @@ public class ResourceByCondition {
           consumer_con.await();
         } catch (InterruptedException e) {}
       }
-      System.out.println(Thread.currentThread().getName() + "...Ïû·ÑÕß.5.0......." + this.name);// Ïû·Ñ¿¾Ñ¼1
+      System.out.println(Thread.currentThread().getName() + "...æ¶ˆè´¹è€….5.0......." + this.name);// æ¶ˆè´¹çƒ¤é¸­1
       flag = false;
-      producer_con.signal();// Ö±½Ó»½ĞÑÉú²úÏß³Ì
+      producer_con.signal();// ç›´æ¥å”¤é†’ç”Ÿäº§çº¿ç¨‹
     } finally {
       lock.unlock();
     }
   }
 }
+

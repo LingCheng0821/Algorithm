@@ -30,10 +30,12 @@ public class Turnout01 {
         int B = sc.nextInt();
         int K = sc.nextInt();
         sc.close();
+        System.out.println(function(A,B,K));
+
 
     }
 
-    public static int function(int A, int B, int K){
+/*    public static int function(int A, int B, int K){
         //参数错误
         if(A < 0 || A > 100000 || B < 0 || B > 100000 || K < 1 || K > 100000)
             return -1;
@@ -52,10 +54,10 @@ public class Turnout01 {
             count = -1;
         else if(remainder % 2 == 1 && K % 2 == 0 ) // remainder为奇数，需要翻动奇数次，积为奇数，K为偶数
             count = -1;
-        /**
+        *//**
          * K - remainder : 假设 remainder个0需要转一次，再加上K-remainder的偶数次
          *
-         */
+         *//*
         else if ((K - remainder) % 2 == 0 && count > 0 && B + K * count >= 2 * K - (remainder + K) / 2)
             count++;//一种特殊情况，还剩下K+remainder个0时直接翻两次即可完成
         else if (remainder % 2 == 0)
@@ -65,6 +67,51 @@ public class Turnout01 {
             count += 2 * Math.ceil((double)(K - remainder) / (2 * (S - K))) + 1;
             //当remainder是奇数时，相当于先把所有1中的K-remainder个翻成0，这样加上remainder一共K个0，
             // 只需额外再翻一次即可，K-remainder是奇数时，永远不能翻成功，是偶数时，翻转方法同上面
+        return count;
+    }*/
+
+    public static int function(int A, int B, int K){
+        int remainder = A % K;          //直接翻转后的剩余待翻转个数,即剩余0的个数
+        int count = A / K;              //直接翻转的次数
+        B += A - remainder;             //直接翻转后1的个数
+
+        /**
+         * 情况1：直接翻转可得结果
+         */
+        if (A == 0 || remainder == 0)    return count;
+
+        /**
+         * 情况2：remainder＋Ｂ＜＝Ｋ　每次翻转的次数大于总数量
+         *       remainder为奇数，需要翻动奇数次，积为奇数，K为偶数　
+         *       K=偶数 无解 无论如何总会单一个
+         *       不满足要求
+         */
+        else if ((remainder + B <= K) || (remainder % 2 == 1 && K % 2 == 0))
+            count = -1;
+
+        /**
+         * 情况3：一种特殊情况，还剩下K+remainder个0时直接翻一次即可完成
+         */
+        else if ((K + remainder) % 2 == 0 && count > 0 && B >= 2 * K - (remainder + K) / 2)
+            count++;
+        /**
+         * remainder=偶数
+            好巧,两次搞定,挑一半(remainder/2)个0,外加(K-remainder)/2个1,翻第1次,剩下的刚好K个0
+
+         每翻两次最多能把remainder中的2*(S-K)个0翻成1，注意这里指的是最多，当翻最后2次或者S-K>remainder/2时，只需翻两次，所以这里用到了ceil（）
+         */
+        else if (remainder % 2 == 0)
+            count += 2 * Math.ceil((double)remainder / (2 * (B - K + remainder)));
+
+        /**
+         * 链接：https://www.nowcoder.com/questionTerminal/9c4c9d10e3db4448b906c6e6cea22b7f
+         来源：牛客网
+
+          //当remainder是奇数时，相当于先把所有1中的K-remainder个翻成0，这样加上remainder一共K个0，只需额外再翻一次即可，K-remainder是奇数时，永远不能翻成功，是偶数时，翻转方法同上面
+         */
+        else
+            count += 2 * Math.ceil((double)(K - remainder) / (2 * (B - K + remainder))) + 1;
+
         return count;
     }
 }

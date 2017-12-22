@@ -7,7 +7,7 @@ import java.util.concurrent.locks.Lock;
 
 
 /**
- * ͬһʱ��֧�ֶ���̵߳ķ���
+ * 同一时刻支持多个线程的访问
  */
 public class TwinsLock implements Lock{
 

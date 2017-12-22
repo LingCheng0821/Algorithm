@@ -1,10 +1,3 @@
-/**
- * File：ConcurrenHashMapDemo.java
- * Package：com.fang.concurrenthashmap
- * Author：chengling
- * Date：2017年9月20日 上午9:51:51
- * Copyright (C) 2003-2017 搜房资讯有限公司-版权所有
- */
 package com.fang.concurrenthashmap;
 
 import java.util.concurrent.ConcurrentHashMap;

@@ -1,53 +1,46 @@
-/**
- * File£ºTest13.java
- * Package£ºcom.fang.algorithm
- * Author£ºchengling
- * Date£º2017Äê11ÔÂ7ÈÕ ÏÂÎç3:13:57
- * Copyright (C) 2003-2017 ËÑ·¿×ÊÑ¶ÓÐÏÞ¹«Ë¾-°æÈ¨ËùÓÐ
- */
 package com.fang.algorithm;
 
 
 /**
- * ÊäÈëÒ»¸öÁ´±í£¬Êä³ö¸ÃÁ´±íÖÐµ¹ÊýµÚk¸ö½áµã¡£
+ * è¾“å…¥ä¸€ä¸ªé“¾è¡¨ï¼Œè¾“å‡ºè¯¥é“¾è¡¨ä¸­å€’æ•°ç¬¬kä¸ªç»“ç‚¹ã€‚
  */
 public class Test13 {
-  
-  static class ListNode {
-      int val;
-      ListNode next = null;
 
-      ListNode(int val) {
-          this.val = val;
-      }
+  static class ListNode {
+    int val;
+    ListNode next = null;
+
+    ListNode(int val) {
+      this.val = val;
+    }
   }
-  
-  
+
+
   public ListNode FindKthToTail(ListNode head, int k) {
     if(k <= 0 || head == null)
-     return null;
+      return null;
     ListNode result = head;
     int i = 0;
-    
+
     while(head != null){
       i++;
       head = head.next;
       if(i > k){
         result = result.next;
-      }      
-    } 
+      }
+    }
     if(k > i){
       return null;
     }
     return result;
   }
-  
+
   public static void main(String[] args) {
     ListNode head1 = new ListNode(1);
     ListNode head2 = new ListNode(2);
     ListNode head3 = new ListNode(3);
     ListNode head4 = new ListNode(4);
-    ListNode head5 = new ListNode(5);   
+    ListNode head5 = new ListNode(5);
     ListNode head6 = new ListNode(6);
     ListNode head7 = new ListNode(7);
     ListNode head8 = new ListNode(8);
@@ -58,10 +51,10 @@ public class Test13 {
     head5.next = head6;
     head6.next = head7;
     head7.next = head8;
-    
+
     ListNode  result = new Test13().FindKthToTail(head1, 10);
     System.err.println(result.val);
-    
+
   }
-  
+
 }

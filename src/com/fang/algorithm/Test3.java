@@ -1,30 +1,23 @@
-/**
- * File£ºTest3.java
- * Package£ºcom.fang.algorithm
- * Author£ºchengling
- * Date£º2017Äê11ÔÂ3ÈÕ ÏÂÎç3:15:39
- * Copyright (C) 2003-2017 ËÑ·¿×ÊÑ¶ÓĞÏŞ¹«Ë¾-°æÈ¨ËùÓĞ
- */
 package com.fang.algorithm;
 
 import java.util.ArrayList;
 import java.util.Stack;
 /**
- * ÊäÈëÒ»¸öÁ´±í£¬´ÓÎ²µ½Í·´òÓ¡Á´±íÃ¿¸ö½ÚµãµÄÖµ¡£
+ * è¾“å…¥ä¸€ä¸ªé“¾è¡¨ï¼Œä»å°¾åˆ°å¤´æ‰“å°é“¾è¡¨æ¯ä¸ªèŠ‚ç‚¹çš„å€¼ã€‚
  */
 public class Test3 {
   private static ArrayList<Integer> result = new ArrayList<>();
-  static class ListNode {   
-    int val;    
-    ListNode next = null;    
+  static class ListNode {
+    int val;
+    ListNode next = null;
     ListNode(int val) {
       this.val = val;
     }
   }
-  
-  
+
+
   public static ArrayList<Integer> printListFromTailToHead(ListNode listNode) {
-    
+
     /*Stack<Integer> stack = new Stack<>();
     while(listNode != null){
       stack.push(listNode.val);
@@ -33,16 +26,16 @@ public class Test3 {
     while(!stack.isEmpty()){
       result.add(stack.pop());
     }*/
-    
+
     if(listNode == null){
       return result;
     }
     printListFromTailToHead(listNode.next);
     result.add(listNode.val);
-    
+
     return result;
   }
-  
+
   public static void main(String[] args) {
     ListNode node1 = new ListNode(1);
     ListNode node2 = new ListNode(2);
@@ -54,4 +47,3 @@ public class Test3 {
       System.err.println(integer);
     }
   }
-}

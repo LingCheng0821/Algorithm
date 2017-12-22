@@ -1,10 +1,3 @@
-/**
- * File£ºArrayBlockingQueueDemo.java
- * Package£ºcom.fang.arrayblockingqueue
- * Author£ºchengling
- * Date£º2017Äê10ÔÂ23ÈÕ ÏÂÎç10:43:24
- * Copyright (C) 2003-2017 ËÑ·¿×ÊÑ¶ÓÐÏÞ¹«Ë¾-°æÈ¨ËùÓÐ
- */
 package com.fang.arrayblockingqueue;
 
 import java.util.concurrent.ArrayBlockingQueue;
@@ -27,7 +20,7 @@ class Apple {
 }
 
 /**
-* Éú²úÕßÏß³Ì
+* ç”Ÿäº§è€…çº¿ç¨‹
 */
 class Producer implements Runnable{
   private final ArrayBlockingQueue<Apple> mAbq;
@@ -46,7 +39,7 @@ class Producer implements Runnable{
       try {
           TimeUnit.MILLISECONDS.sleep(1000);
           Apple apple = new Apple();
-          System.out.println("Éú²úApple="+apple);
+          System.out.println("ç”Ÿäº§Apple="+apple);
           mAbq.put(apple);
       } catch (InterruptedException e) {
           e.printStackTrace();
@@ -55,7 +48,7 @@ class Producer implements Runnable{
 }
 
 /**
-* Ïû·ÑÕßÏß³Ì
+* æ¶ˆè´¹è€…çº¿ç¨‹
 */
 class Consumer implements Runnable{
 
@@ -77,6 +70,6 @@ class Consumer implements Runnable{
 
   private void comsume() throws InterruptedException {
       Apple apple = mAbq.take();
-      System.out.println("Ïû·ÑApple="+apple);
+      System.out.println("æ¶ˆè´¹Apple="+apple);
   }
 }
